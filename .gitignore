@@ -58,3 +58,6 @@ MANIFEST
 ._*
 # Windows
 Thumbs.db
+
+# Environment variables
+.env
