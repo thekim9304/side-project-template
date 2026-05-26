@@ -1,14 +1,21 @@
-# 데이터 분석 및 시각화
+# Core data stack
+numpy
 pandas
-seaborn
-
-# 머신러닝
 scikit-learn
-tensorflow
-
-# 기타 유틸리티
+matplotlib
+seaborn
 tqdm
 
-## 쥬피터랩 익스텐션
+# Notebook experience
 jupyterlab-lsp
 python-lsp-server
+
+# App / API
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+httpx
+
+# Testing
+pytest

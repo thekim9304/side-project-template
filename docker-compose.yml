@@ -1,25 +1,37 @@
-version: '3.8'
 services:
   lab:
     build: .
+    container_name: side-project-template-lab
+    working_dir: /home/jovyan/project
     ports:
       - "8888:8888"
-    
     volumes:
       - .:/home/jovyan/project
-
     env_file:
       - .env
-    
-    working_dir: /home/jovyan/project/workspace
-    container_name: jupyter-lab-pro-project
-    
     command: >
       jupyter lab
-      --notebook-dir=/home/jovyan/project/workspace
+      --notebook-dir=/home/jovyan/project/notebooks
       --ip=0.0.0.0
       --port=8888
       --no-browser
       --allow-root
       --NotebookApp.token=''
       --NotebookApp.password=''
+
+  api:
+    build: .
+    container_name: side-project-template-api
+    working_dir: /home/jovyan/project
+    profiles: ["app"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/home/jovyan/project
+    env_file:
+      - .env
+    command: >
+      python -m uvicorn src.api.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
